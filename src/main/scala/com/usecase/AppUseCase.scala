@@ -30,36 +30,24 @@ object AppUseCase {
      */
     logger.info("=====> Reading file")
 
-    val df = spark.read
-      .option("header", true)
-      .csv(conf.getString("input.pathClientes"))
+    val dfAthletes = spark.read
+      .parquet(conf.getString("input.pathAthletes"))
 
-
-    val dfTransactions = spark.read
-      .option("header", true)
-      .csv(conf.getString("input.pathTransacciones"))
 
     /**
      * TRANSFORMATIONS
      */
     logger.info("=====> Transforming table")
-    val dfTransformed = df.select(col("*"), lit(1).alias("literal"))
+    val dfTransformed = dfAthletes.select(col("*"), lit(1).alias("literal"))
 
-    logger.info("=====> Explain select")
-    dfTransformed.explain()
-
-    val dfJoined = dfTransformed.join(
-      dfTransactions,
-      dfTransformed("tr") === dfTransactions("idTr"),
-      "inner"
-    )
 
     /**
      * OUTPUT
      */
     logger.info("=====> Writing file")
-    dfTransformed.write.mode("overwrite")
-      .csv(conf.getString("output.path"))
+    dfTransformed.write
+      .mode("overwrite")
+      .parquet(conf.getString("output.path"))
 
 
     logger.info("=====> end process")
