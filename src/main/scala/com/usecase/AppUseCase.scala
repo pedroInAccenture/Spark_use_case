@@ -53,11 +53,5 @@ object AppUseCase {
     logger.info("=====> end process")
     logger.warn("=====> sleeping")
 
-
-    /**
-     * OUTPUT
-     */
-    logger.info("=====> Writing file")
-
   }
 }
