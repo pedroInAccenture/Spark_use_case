@@ -47,7 +47,7 @@ jobs:
     - name: Install AWS
       run: |
         apt-get update && apt-get install -y jq python-pip python3-dev
-        pip install awscli==1.16.232
+        pip install awscli
 
         echo python is already installed
 
