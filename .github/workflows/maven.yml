@@ -40,6 +40,7 @@ jobs:
       run: |
         apt-get update && apt-get install -y jq python-pip python-dev
         pip install awscli==1.11.136
+        echo python is already installed
         mkdir -p ~/.aws
         touch ~/.aws/credentials
         aws_access_key_id = ${AWS_ACCESS_KEY_ID}
