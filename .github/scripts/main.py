@@ -41,10 +41,11 @@ c = [
 
 if __name__ == "__main__":
     print(">>>> executing file")
-    AWS_ACCESS_KEY_ID = sys.argv[1]
-    AWS_SECRET_ACCESS_KEY = sys.argv[2]
+    AWS_REGION = sys.argv[1]
+    AWS_ACCESS_KEY_ID = sys.argv[2]
+    AWS_SECRET_ACCESS_KEY = sys.argv[3]
 
-    client = boto3.client('emr', "us-east-2",
+    client = boto3.client('emr', AWS_REGION,
                           aws_access_key_id=AWS_ACCESS_KEY_ID,
                           aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 

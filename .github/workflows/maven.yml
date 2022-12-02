@@ -48,14 +48,14 @@ jobs:
         aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}" > ~/.aws/credentials
     - name: copy file in S3
       run: |
-        cp target/*jar-with-dependencies.jar file.jar
+        cp target/*jar-with-dependencies.jar .
         echo this is the region
-        echo ${AWS_REGION}
+        echo ${{AWS_REGION}}
         echo ${{ secrets.AWS_S3_BUCKET }}
 
         echo copy file
         ls -l
-        aws s3 cp file.jar s3://${{ secrets.AWS_S3_BUCKET }}/jars/ --region us-east-2 $*
+        aws s3 cp *jar-with-dependencies.jar s3://${{ secrets.AWS_S3_BUCKET }}/jars/ --region ${{ secrets.AWS_REGION }} $*
 
         rm -rf ~/.aws
 
