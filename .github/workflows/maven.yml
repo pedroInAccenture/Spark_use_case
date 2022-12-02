@@ -76,6 +76,7 @@ jobs:
           pip install boto3
       - name: add step to EMR
         run: |
-          cd ./github/scripts
+          ls -l
+          cd .github/scripts/
           ls -l
           python main.py ${{ secrets.AWS_ACCESS_KEY_ID }} ${{ secrets.AWS_SECRET_ACCESS_KEY }}
