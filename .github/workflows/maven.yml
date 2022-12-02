@@ -62,9 +62,8 @@ jobs:
     - name: copy file in S3
       run: |
         cp target/*jar-with-dependencies.jar file.jar
-
+        echo ${AWS_REGION}
         ls -l
-        aws s3 cp ${FILE} s3://${AWS_S3_BUCKET}${AWS_S3_PATH} \
-                    --region ${AWS_REGION} $*
+        aws s3 cp ${FILE} s3://${AWS_S3_BUCKET}${AWS_S3_PATH} --region ${AWS_REGION} $*
 
         rm -rf ~/.aws
