@@ -28,7 +28,7 @@ def addStep(JobFlowId):
 c = [
     {
         "Args": ["spark-submit", "--master", "yarn", "--deploy-mode", "cluster", "--class",
-                 "mx.santander.dl2sf.joboperation.BalderJobOperator", "s3://emrscriptsaccenture/jars/file.jar",
+                 "com.usecase.ExecuteApp", "s3://emrscriptsaccenture/jars/file.jar",
                  "TESTPEDRO1000", "20220101", "0", "s3://emrscriptsaccenture/config.json", "DRO", "dm_academia",
                  "academia", "dm_academia"],
         "Type": "CUSTOM_JAR",

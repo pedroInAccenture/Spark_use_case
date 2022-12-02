@@ -10,11 +10,18 @@ class AppSession {
    */
   val logger = Logger.getLogger(this.getClass.getName)
 
-  val spark: SparkSession = SparkSession.builder()
-    .master("local[1]")
-    .appName("example")
-    .getOrCreate()
+//  val spark: SparkSession = SparkSession.builder()
+//    .master("local[1]")
+//    .appName("example")
+//    .getOrCreate()
 
+val spark = SparkSession.builder()
+  .appName("Spark academy")
+  .config("spark.sql.warehouse.dir", "spark-warehouse")
+  .enableHiveSupport()
+  .getOrCreate()
+  spark.conf.set("spark.sql.sources.partitionOverWriteMode", "dynamic")
+  spark.conf.set("spark.yarn.nodemanager.vmem-check-enabled", "false")
 
   /**
    *  PARAMETERS
