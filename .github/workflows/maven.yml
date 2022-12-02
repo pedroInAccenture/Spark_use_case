@@ -47,7 +47,7 @@ jobs:
     - name: Install AWS
       run: |
         apt-get update && apt-get install -y jq python-pip python-dev
-        pip install awscli==1.11.136
+        pip install awscli==1.16.232
 
         echo python is already installed
 
@@ -59,11 +59,10 @@ jobs:
         echo "[default]
         aws_access_key_id = ${AWS_ACCESS_KEY_ID}
         aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" > ~/.aws/credentials
+    - name: copy file in S3
+      run: |
+        cp target/*jar-with-dependencies.jar file.jar
 
-        ls -l
-        cd target
-        ls -l
-        cp usecase-1.0.1-SNAPSHOT-jar-with-dependencies.jar file.jar
         ls -l
         aws s3 cp ${FILE} s3://${AWS_S3_BUCKET}${AWS_S3_PATH} \
                     --region ${AWS_REGION} $*
