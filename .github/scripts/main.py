@@ -24,21 +24,6 @@ def addStep(JobFlowId):
     )
     print(response)
 
-
-c = [
-    {
-        "Args": ["spark-submit", "--master", "yarn", "--deploy-mode", "cluster", "--class",
-                 "com.usecase.ExecuteApp", "s3://emrscriptsaccenture/jars/file.jar",
-                 "TESTPEDRO1000", "20220101", "0", "s3://emrscriptsaccenture/config.json", "DRO", "dm_academia",
-                 "academia", "dm_academia"],
-        "Type": "CUSTOM_JAR",
-        "ActionOnFailure": "CONTINUE",
-        "Jar": "command-runner.jar",
-        "Properties": "",
-        "Name": "Spark application"
-    }
-]
-
 if __name__ == "__main__":
     print(">>>> executing file")
     AWS_REGION = sys.argv[1]
