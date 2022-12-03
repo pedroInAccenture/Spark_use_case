@@ -27,7 +27,7 @@ object AppUseCase extends AppSession {
      */
 
     writeParquet(dfAthletesWithExtraColumn, "output.path")
-
+    spark.stop()
     logger.info("=====> end process")
 
   }
