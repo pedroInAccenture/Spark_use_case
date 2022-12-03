@@ -30,6 +30,7 @@ val spark = SparkSession.builder()
 
   def readParquet(input: String): DataFrame = {
     println(">>>>>" + conf)
+    println(">>>>>" + conf.getString(input))
     spark.read.parquet(conf.getString(input))
   }
 
