@@ -29,6 +29,7 @@ val spark = SparkSession.builder()
   val conf:Config = LoadConf.getConfig
 
   def readParquet(input: String): DataFrame = {
+    println(">>>>>" + conf)
     spark.read.parquet(conf.getString(input))
   }
 
