@@ -35,8 +35,9 @@ val spark = SparkSession.builder()
   }
 
   def writeParquet(df: DataFrame, output:String) ={
+    println(">>>>>" + conf.getString(output))
     df.write.mode("overwrite")
 //      .partitionBy(partitionBy)
-      .parquet(output)
+      .parquet(conf.getString(output))
   }
 }
