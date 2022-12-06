@@ -1,6 +1,6 @@
 package com.usecase
 
-import com.usecase.sql.Analytic
+import com.usecase.sql.Transformation
 import com.usecase.utils.AppSession
 
 object AppUseCase extends AppSession {
@@ -19,7 +19,7 @@ object AppUseCase extends AppSession {
      * TRANSFORMATIONS
      */
     logger.info("=====> Transforming data")
-    val dfAthletesWithExtraColumn = Analytic.addLiteralColumn(dfAthletes)
+    val dfAthletesWithExtraColumn = Transformation.addLiteralColumn(dfAthletes)
 
 
     /**
